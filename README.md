@@ -27,7 +27,7 @@ has reduced from 4841 ms to 8 ms!
 
 | Before | After |
 |--- | --- |
-|<img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/hw4-eburhansjah-h2database/assets/before-hw4-prob1.png" alt="before-explain-analyze-img-hw4-prob1" style="width:50%; height:auto;">|<img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/hw4-eburhansjah-h2database/assets/explain-analyze-hw4-prob1.png" alt="after-explain-analyze-img-hw4-prob1" style="width:80%; height:auto;">|
+|<img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/master/assets/before-hw4-prob1.png" alt="before-explain-analyze-img-hw4-prob1" style="width:50%; height:auto;">|<img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/master/assets/explain-analyze-hw4-prob1.png" alt="after-explain-analyze-img-hw4-prob1" style="width:80%; height:auto;">|
 
  
 ## Problem 2 - Somewhat Strange Query
@@ -50,7 +50,7 @@ Composite index optimizes the query that filters based on content, post_timestam
 
 | Before | After |
 |--- | --- |
-|<img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/hw4-eburhansjah-h2database/assets/explain-analysis-hw4-prob2-before.png" alt="before-explain-analyze-hw4-prob2" style="width:100%; height:auto;"> | <img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/hw4-eburhansjah-h2database/assets/explain-analysis-hw4-prob2-after.png" alt="after-explain-analyze-hw4-prob2" style="width:100%; height:auto;">|
+|<img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/master/assets/explain-analysis-hw4-prob2-before.png" alt="before-explain-analyze-hw4-prob2" style="width:100%; height:auto;"> | <img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/master/assets/explain-analysis-hw4-prob2-after.png" alt="after-explain-analyze-hw4-prob2" style="width:100%; height:auto;">|
 
 
 Intially, I experimented with the following:
@@ -71,7 +71,7 @@ Result from attempt 2 also did not reduce query time to below 100 ms. In fact, i
  
 **<ins>a) Analyze Explain Analyze outpout for the query when no indexes exist</ins>**
 
-<img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/hw4-eburhansjah-h2database/assets/explain-analyze-hw4-prob3-1-without-indexes.png" alt="explain-analyze-hw4-prob3-1-without-indexes" style="width:40%; height:autho;">
+<img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/master/assets/explain-analyze-hw4-prob3-1-without-indexes.png" alt="explain-analyze-hw4-prob3-1-without-indexes" style="width:40%; height:autho;">
 
 The screenshot above is the output of Explain Analyze for the query when no indexes exist. We can observe that the data base is doing a table scan that involves 995087 total number of scans, which gives the following query time: (3 rows, 589 ms).
 
@@ -99,16 +99,16 @@ From the table above, hash index in descending order on timestamp gives the fast
 
 <ins>EXPLAIN ANALYZE SCREENSHOTS:</ins>
 - B+ tree (ASC) index on post_timestamp
-   - <img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/hw4-eburhansjah-h2database/assets/hw4-prob3-1-btree-asc-idx.png" alt="btree-asc-timestamp" style="width:60%; height:auto;">
+   - <img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/master/assets/hw4-prob3-1-btree-asc-idx.png" alt="btree-asc-timestamp" style="width:60%; height:auto;">
 
 - B+ tree (DESC) index on post_timestamp
-  - <img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/hw4-eburhansjah-h2database/assets/hw4-prob3-1-btree-desc-idx.png" alt="btree-desc-timestamp" style="width:60%; height:auto;">
+  - <img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/master/assets/hw4-prob3-1-btree-desc-idx.png" alt="btree-desc-timestamp" style="width:60%; height:auto;">
   
 - Hash (ASC) index on post_timestamp
-  - <img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/hw4-eburhansjah-h2database/assets/hw4-prob3-1-hash-asc-idx.png" alt="hash-asc-timestamp" style="width:60%; height:auto;">
+  - <img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/master/assets/hw4-prob3-1-hash-asc-idx.png" alt="hash-asc-timestamp" style="width:60%; height:auto;">
   
 - Hash (DESC) index on post_timestamp
-  - <img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/hw4-eburhansjah-h2database/assets/hw4-prob3-1-hash-desc-idx.png" alt="hash-desc-timestamp" style="width:60%; height:auto;">
+  - <img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/master/assets/hw4-prob3-1-hash-desc-idx.png" alt="hash-desc-timestamp" style="width:60%; height:auto;">
 
 **<ins>c) What index does H2DB end up using?  Explain the pros and cons of each index that you created.</ins>**
 
@@ -168,13 +168,13 @@ WHERE
 
 <ins>EXPLAIN ANALYZE SCREENSHOTS:</ins>
 - Without index
-  - <img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/hw4-eburhansjah-h2database/assets/hw4-prob3-3-without-idx.png" alt="3-3-without-index" style="width:50%; height:auto;">
+  - <img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/master/assets/hw4-prob3-3-without-idx.png" alt="3-3-without-index" style="width:50%; height:auto;">
   
 - B+ tree (ASC) index on post_timestamp
-  - <img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/hw4-eburhansjah-h2database/assets/hw4-prob3-3-btree-asc.png" alt="3-3-btree-asc-timestamp" style="width:50%; height:auto;">
+  - <img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/master/assets/hw4-prob3-3-btree-asc.png" alt="3-3-btree-asc-timestamp" style="width:50%; height:auto;">
 
 - B+ tree (DESC) index on post_timestamp
-  - <img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/hw4-eburhansjah-h2database/assets/hw4-prob3-3-btree-desc.png" alt="3-3-btree-desc-timestamp" style="width:50%; height:auto;">
+  - <img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/master/assets/hw4-prob3-3-btree-desc.png" alt="3-3-btree-desc-timestamp" style="width:50%; height:auto;">
 
 
 **<ins>b) Modify one of the indexes in 3.2 to make query go faster</ins>**
@@ -191,7 +191,7 @@ The following is Explain Analyze output for modified query:
 
 <ins>EXPLAIN ANALYZE SCREENSHOT:</ins>
 
-<img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/hw4-eburhansjah-h2database/assets/hw4-prob3-3-mod-idx.png" alt="3-3-mod-idx" style="width:50%; height:auto;">
+<img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/master/assets/hw4-prob3-3-mod-idx.png" alt="3-3-mod-idx" style="width:50%; height:auto;">
 
 **<ins>c) Explain why it makes query go faster</ins>**
 
@@ -257,22 +257,22 @@ Three tables are involved in the query above.  Theoretically, that would give us
 - Permutation 1: posts -> followers -> users
   - The most inefficient query
   - This is due to the massive size of posts table. The join order of this permutation does not help reduce rows effectively by starting with posts table. By leaving the filtering conditions to the end (users table), the data base is forced to process all unnecessary information during the query process.
-  - <img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/hw4-eburhansjah-h2database/assets/hw4-4-og-query.png" alt="p-f-u-join-order" style="width:50%; height:auto;">
+  - <img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/master/assets/hw4-4-og-query.png" alt="p-f-u-join-order" style="width:50%; height:auto;">
   
 - Permutation 2: users -> followers -> posts
   - The most efficient query
   - This is because we are doing filtering early on users table which is based on the WHERE clause. This significantly reduces the number of rows early, preventing database from unnecessary processing overhead.
-  - <img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/hw4-eburhansjah-h2database/assets/hw4-4-1-rearrange-u-f-p-join-order.png" alt="u-f-p-join-order" style="width:50%; height:auto;">
+  - <img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/master/assets/hw4-4-1-rearrange-u-f-p-join-order.png" alt="u-f-p-join-order" style="width:50%; height:auto;">
   
 - Permutation 3: followers -> users -> posts
   - Inefficient query, but is faster than permutation 1
   - This is because filtering is happening after joining the followers table to the users table (happing at the middle of the join order)
-  - <img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/hw4-eburhansjah-h2database/assets/hw4-4-2-f-u-p-join-order.png" alt="f-u-p-join-order" style="width:50%; height:auto;">
+  - <img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/master/assets/hw4-4-2-f-u-p-join-order.png" alt="f-u-p-join-order" style="width:50%; height:auto;">
   
 - Permutation 4: followers -> posts -> users
   - Inefficient query. Faster than permutation 1 and slower than permutation 3
   - This is because although we start with followers table, which is a smaller table compared to the posts table, we are doing the necessary filtering at the end (users table)
-  - <img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/hw4-eburhansjah-h2database/assets/hw4-4-2-f-p-u-join-order.png" alt="f-p-u-join-order" style="width:50%; height:auto;">
+  - <img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/master/assets/hw4-4-2-f-p-u-join-order.png" alt="f-p-u-join-order" style="width:50%; height:auto;">
  
 ## Problem 5 - Putting it All Together - Fast Most Recent Posts 
 
@@ -303,11 +303,11 @@ ORDER BY posts.post_timestamp DESC, posts.author;
 <ins>EXPLAIN ANALYZE SCREENSHOT:</ins>
 
 
-<img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/hw4-eburhansjah-h2database/assets/hw4-5-explain-analyze-output.png" alt="hw4-5-explain-analyze" style="width:60%; height:auto;">
+<img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/master/assets/hw4-5-explain-analyze-output.png" alt="hw4-5-explain-analyze" style="width:60%; height:auto;">
 
 <ins>Terminal Output screenshot:</ins>
 
-<img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/hw4-eburhansjah-h2database/assets/hw4-5-terminal.png" alt="hw4-5-terminal-output" style="width:90%; height:auto;">
+<img src="https://github.com/eburhansjah/ec500-spring2025-eburhansjah-h2database/blob/master/assets/hw4-5-terminal.png" alt="hw4-5-terminal-output" style="width:90%; height:auto;">
 
 
 
