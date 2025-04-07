@@ -5,6 +5,7 @@
  */
 package org.h2.command.query;
 
+import java.util.Arrays;
 import java.util.BitSet;
 import java.util.Random;
 import org.h2.engine.SessionLocal;
@@ -81,9 +82,20 @@ class Optimizer {
             testPlan(filters, isSelectCommand);
         } else {
             startNs = System.nanoTime();
+//            System.out.println("Filter count: " + filters.length);
+//            System.out.println("MAX_BRUTE_FORCE_FILTERS: " +  MAX_BRUTE_FORCE_FILTERS);
             if (filters.length <= MAX_BRUTE_FORCE_FILTERS) {
-                calculateBruteForceAll(isSelectCommand);
+                // HW5
+                System.out.println("Using Rule Based Join Order Picker");
+                RuleBasedJoinOrderPicker ruleBasedJoinOrderPicker = new RuleBasedJoinOrderPicker(session, filters);
+                TableFilter[] ruleBasedResult = ruleBasedJoinOrderPicker.bestOrder();
+
+                System.out.println("rule based result: " + Arrays.toString(ruleBasedResult));
+
+                testPlan(ruleBasedResult, isSelectCommand);
+//                calculateBruteForceAll(isSelectCommand); // used this in HW4
             } else {
+                System.out.println("Without Rule Based Join Order Picker");
                 calculateBruteForceSome(isSelectCommand);
                 random = new Random(0);
                 calculateGenetic(isSelectCommand);
@@ -104,6 +116,7 @@ class Optimizer {
                 && System.nanoTime() - startNs > cost * 100_000L;
     }
 
+    // Homework 4
     private void calculateBruteForceAll(boolean isSelectCommand) {
         TableFilter[] list = new TableFilter[filters.length];
         Permutations<TableFilter> p = Permutations.create(filters, list);
